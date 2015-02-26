@@ -1,2 +1,1 @@
-<captains-favorites captains="{captains}"></captains-favorites>
-<captains-list captains="{captains}"></captains-list>
+<captains-setup></captains-setup>

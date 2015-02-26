@@ -33,8 +33,27 @@
 			<td>
 				<a href="javascript://" can-click="toggleFavorite">Favorite</a>
 				<a href="javascript://" can-click="destroy">X</a>
+				<a href="javascript://" can-click="restore">Restore</a>
 			</td>
 		</tr>
+
+		{{#showErrors}}
+		<tr>
+			<td colspan="6">
+				{{#each .}}
+				<div class="alert alert-danger">{{.}}</div>
+				{{/each}}
+			</td>
+		</tr>
+		{{/showErrors}}
+
+		{{^showErrors}}
+		<tr>
+			<td colspan="6">
+				<div class="alert alert-success">Success!</div>
+			</td>
+		</tr>
+		{{/showErrors}}
 		{{/each}}
 		{{/if}}
 	</tbody>

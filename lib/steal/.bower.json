@@ -1,0 +1,28 @@
+{
+  "name": "steal",
+  "main": "steal.js",
+  "ignore": [
+    "test",
+    "src",
+    "core",
+    "docs"
+  ],
+  "version": "0.7.0-pre.3",
+  "devDependencies": {
+    "qunit": "~1.12.0",
+    "systemjs": "bitovi/systemjs#0.14.0-bitovi.0",
+    "traceur": "0.0.82",
+    "system-bower": "~0.1.0",
+    "es6-module-loader": "~0.14.0"
+  },
+  "homepage": "https://github.com/bitovi/steal",
+  "_release": "0.7.0-pre.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.7.0-pre.3",
+    "commit": "bae3d5efb86582d95e2fe76ae7666570b5afb3f9"
+  },
+  "_source": "git://github.com/bitovi/steal.git",
+  "_target": "v0.7.0-pre.3",
+  "_originalSource": "steal"
+}

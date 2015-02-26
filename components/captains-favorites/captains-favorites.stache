@@ -1,0 +1,7 @@
+<ul class="list-unstyled list-inline">
+	{{#each captains.favorites}}
+	<li>
+		<span class="btn btn-primary">{{fullName}}</span>
+	</li>
+	{{/each}}
+</ul>

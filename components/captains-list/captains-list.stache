@@ -1,0 +1,41 @@
+<table class="table">
+	<thead>
+		<tr>
+			<td></td>
+			<td>Points</td>
+			<td></td>
+			<td>Name</td>
+			<td>Ship</td>
+			<td></td>
+		</tr>
+	</thead>
+
+	<tbody>
+		{{#if captains.isPending}}
+		<tr>
+			<td colspan="6">Loading...</td>
+		</tr>
+		{{/if}}
+
+		{{#if captains.isResolved}}
+		{{#each captains}}
+		<tr>
+			<td>
+				<a href="javascript://" can-click="inc">+</a>
+				<a href="javascript://" can-click="dec">-</a>
+			</td>
+			<td>{{votes}}</td>
+			<td>
+				<img src="{{photo}}"/>
+			</td>
+			<td>{{fullName}}</td>
+			<td>{{ship}}</td>
+			<td>
+				<a href="javascript://" can-click="toggleFavorite">Favorite</a>
+				<a href="javascript://" can-click="destroy">X</a>
+			</td>
+		</tr>
+		{{/each}}
+		{{/if}}
+	</tbody>
+</table>

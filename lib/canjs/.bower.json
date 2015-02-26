@@ -1,0 +1,51 @@
+{
+  "name": "canjs",
+  "repo": "bitovi/canjs",
+  "description": "Can do JavaScript MVC",
+  "version": "2.2.0-pre.0",
+  "main": "can.js",
+  "keywords": [
+    "mvc",
+    "component",
+    "amd"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "qunit": "~1.14.0",
+    "zepto": "~1.0.0",
+    "benchmark": "~1.0.0",
+    "requirejs": "~2.1.10",
+    "dojo": "1.8.6",
+    "steal": "git://github.com/bitovi/steal#eeac5d602e4587b775588175275dc021b585fee2"
+  },
+  "system": {
+    "map": {
+      "can/can": "can",
+      "jquery/jquery": "jquery"
+    },
+    "paths": {
+      "can": "bower_components/canjs/can.js",
+      "can/*": "bower_components/canjs/*.js"
+    },
+    "ext": {
+      "ejs": "can/view/ejs/system",
+      "mustache": "can/view/mustache/system",
+      "stache": "can/view/stache/system"
+    },
+    "buildConfig": {
+      "map": {
+        "can/util/util": "can/util/domless/domless"
+      }
+    }
+  },
+  "homepage": "https://github.com/bitovi/canjs",
+  "_release": "2.2.0-pre.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.2.0-pre.0",
+    "commit": "6c7dcf7b2b6c34d5baa0def9cadb116fa432c155"
+  },
+  "_source": "git://github.com/bitovi/canjs.git",
+  "_target": "v2.2.0-pre.0",
+  "_originalSource": "git://github.com/bitovi/canjs.git"
+}

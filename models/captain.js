@@ -1,8 +1,17 @@
 import can from 'can/';
 import 'can/map/define/';
+import 'can/map/validations/';
 
-var Captain = can.Model.extend({
-	resource: '/captains'
+import BackupModel from './backupModel';
+
+var Captain = BackupModel.extend({
+	resource: '/captains',
+
+	init: function() {
+		this.validate(['upvotes'], function(val) {
+			if(val < 0) return 'less than 0!';
+		});
+	}
 }, {
 	define: {
 		fullName: {
@@ -57,6 +66,8 @@ Captain.List = Captain.List.extend({
 		});
 	}
 });
+
+window.Captain = Captain;
 
 export { Captain as default };
 

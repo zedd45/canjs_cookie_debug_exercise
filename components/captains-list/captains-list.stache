@@ -37,6 +37,7 @@
 			</td>
 		</tr>
 
+		<!--
 		{{#showErrors}}
 		<tr>
 			<td colspan="6">
@@ -54,6 +55,7 @@
 			</td>
 		</tr>
 		{{/showErrors}}
+		-->
 		{{/each}}
 		{{/if}}
 	</tbody>

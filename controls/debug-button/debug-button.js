@@ -1,13 +1,18 @@
-import ModalDialog from 'controls/modal/';
+/* this whole thing seems redundant when we can just use BS3's declarative syntax */
+import 'bootstrap/modal';
+// import 'can/construct/super/';
 
 var DebugButton = can.Control.extend({
     init: function () {
-        this._modal = new ModalDialog(this.element.data().target);
+        this.$target = $(this.element.data().target);
     },
-    destroy: function () {
-        this._modal.destroy();
-
-    },
+    // destroy: function () {
+    //     this._modalElement.modal('destroy');
+    //     this._super();
+    // },
+    click: function () {
+        this.$target.modal();
+    }
 });
 
 export { DebugButton as default };

@@ -3,9 +3,11 @@ import 'bootstrap/modal';
 var ModalDialog = can.Control.extend({
     init: function (selector) {
         // TODO: sanity checking
-        $(selector).modal({
+        var handle = $(selector).modal({
             show: false
         });
+
+        return handle;
     },
 
     // 'show.bs.modal': function () {

@@ -1,7 +1,10 @@
+'format es6'
+
 import can from 'can/';
 import 'can/map/define/';
 import 'can/map/validations/';
-import jQCookie from "jquery-cookie";
+import 'can/construct/super/';
+import "jquery-cookie";
 
 import BackupModel from './backupModel';
 
@@ -9,13 +12,15 @@ var Cookie = BackupModel.extend({
 
     // return serialized list of cookies.
     findAll: function (params, success, error) {
-        var cookies = jQCookie(),
+
+        var cookiesObj = $.cookie(),
             dfd = new can.Deferred(),
             self = this; // clean this up... I dislike this (anti-pattern? (now))
 
         dfd.done( function (cookies) {
             if ("function" === typeof success) {
                 success.call(self, cookies);
+                self._super();
             }
         })
         .fail( function () {
@@ -24,25 +29,56 @@ var Cookie = BackupModel.extend({
             }
         });
 
-        dfd.resolve(cookies);
+        // dfd.resolve(new Cookie.List(cookiesObj));
+        dfd.resolve(cookiesObj);
+        // debugger;
+        return dfd;
+    },
+    findOne: function ( params, success, error ) {
+
+        var cookie = $.cookie( params.name || params.id ),
+            dfd = new can.Deferred(),
+            self = this; // clean this up... I dislike this (anti-pattern? (now))
+
+        dfd.done( function (cookie) {
+            if ("function" === typeof success) {
+                success.call(self, cookie);
+                self._super();
+            }
+        })
+        .fail( function () {
+            if ("function" === typeof error) {
+                error.apply(self, arguments);
+            }
+        });
+
+        dfd.resolve( new Cookie.List(cookie));
 
         return dfd;
     },
-    findOne: function ( obj ) {
-        return jQCookie( obj.name || obj.id );
+    create:  function ( params ) {
+        return $.cookie( params.name, params.value);
     },
-    create:  function ( obj ) {
-        // TODO: use _ to remove the name & value from the final param
-        return jQCookie( obj.name, obj.value, obj);
+    update:  function ( cookieName, attrs) {
+        var currentCookie = this.findOne(cookieName);
+        // TODO: update the params with a _.merge?
+        $.cookie(cookieName, attrs);
     },
-    update:  function (obj) {
-        var currentCookie = this.findOne(obj);
-        jQCookie();
+    destroy: function ( cookieName ) {
+        return $.removeCookie(cookieName);
     },
-    destroy: function ( obj ) {
-        var target = obj && obj.name || obj;
-        return $.removeCookie(target);
-    },
+
+    parseModels: function (rawDough) {
+       var bakedCookies = [];
+       // note the syntax difference here between lodash
+       can.each( rawDough, function ( value, indexKey ) {
+            bakedCookies.push({
+                key: indexKey,
+                value: value,
+            });
+       });
+       return bakedCookies;
+    }
 
 }, {
     define: {

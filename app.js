@@ -12,12 +12,20 @@ import DebugButton from 'controls/debug-button/';
 import template from 'app.stache!';
 
 // model(s)
-import cookie from 'models/cookie';
+import Cookie from 'models/cookie';
 // fixtures
 import 'fixtures/';
 
+var CookieList = can.List.extend({
+    init: function(){
+        this.replace(Cookie.findAll());
+    }
+});
+
+
 $('body').append(template({
-    cookies: cookie
+    cookies: new CookieList()
 }));
+
 new DebugButton('.btn-info');
 

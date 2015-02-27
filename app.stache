@@ -16,6 +16,7 @@
               </div>
               <div class="modal-body">
 
+              {{log}}
                 <!-- {{# if cookies }} -->
                 <table class="table table-bordered">
                   <tbody>

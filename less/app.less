@@ -1,0 +1,18 @@
+.modal {
+    table {
+        // prevent the table from stretching outside of the modal
+        table-layout: fixed;
+        overflow-x: hidden;
+
+        &.cookies-display {
+            // these selectors seem brittle, but if you add a column,
+            // you're going to have to change it anyway
+            td:first-child {
+                width: 33%;
+            }
+            td:nth-child(2n) {
+                width: 66%;
+            }
+        }
+    }
+}

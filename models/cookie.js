@@ -68,6 +68,9 @@ var Cookie = BackupModel.extend({
         return $.removeCookie(cookieName);
     },
 
+    // parseModels allows us to format the cookies as `key: value` pairs, vs
+    // an array of objects whose keys are unknown
+    // this allows us to reliably
     parseModels: function (rawDough) {
        var bakedCookies = [];
        // note the syntax difference here between lodash

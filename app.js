@@ -3,29 +3,25 @@ import $ from 'jquery';
 import can from 'can/';
 import 'can/view/stache/';
 import 'can/list/promise/';
+import 'bootstrap/modal';
+
+// observables (maps / lists / viewModels )
+import CookieList from 'observables/CookieList';
 
 // components
 import 'components/captains/';
-import DebugButton from 'controls/debug-button/';
 
 // template(s)
 import template from 'app.stache!';
 
-// model(s)
-import Cookie from 'models/cookie';
 // fixtures
 import 'fixtures/';
 
-var CookieList = can.List.extend({
-    init: function(){
-        this.replace(Cookie.findAll());
-    }
-});
-
+// last but not least, Less Styles
+import "less/app.less!";
 
 $('body').append(template({
-    cookies: new CookieList()
+    // cookies: new can.List(), // test empty
+    cookies: new CookieList(),
 }));
-
-new DebugButton('.btn-info');
 

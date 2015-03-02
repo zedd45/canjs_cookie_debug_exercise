@@ -17,6 +17,9 @@ import template from 'app.stache!';
 // fixtures
 import 'fixtures/';
 
+// attrs
+import 'attrs/editable-item';
+
 // last but not least, Less Styles
 import "less/app.less!";
 

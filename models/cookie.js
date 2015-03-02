@@ -84,14 +84,7 @@ var Cookie = BackupModel.extend({
     }
 
 }, {
-    define: {
-        key: {
-            value: ""
-        },
-        value: {
-            value: ""
-        }
-    },
+    // no instance properties, yet
 });
 
 

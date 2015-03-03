@@ -10,15 +10,13 @@ import CookieList from 'observables/CookieList';
 
 // components
 import 'components/captains/';
+import 'components/editable-item/';
 
 // template(s)
 import template from 'app.stache!';
 
 // fixtures
 import 'fixtures/';
-
-// attrs
-import 'attrs/editable-item';
 
 // last but not least, Less Styles
 import "less/app.less!";

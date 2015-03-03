@@ -34,9 +34,9 @@ var Cookie = BackupModel.extend({
         // debugger;
         return dfd;
     },
-    findOne: function ( params, success, error ) {
+    findOne: function ( id, success, error ) {
 
-        var cookie = $.cookie( params.name || params.id ),
+        var cookie = $.cookie( id ),
             dfd = new can.Deferred(),
             self = this; // clean this up... I dislike this (anti-pattern? (now))
 
@@ -60,9 +60,11 @@ var Cookie = BackupModel.extend({
         return $.cookie( params.name, params.value);
     },
     update:  function ( cookieName, attrs) {
-        var currentCookie = this.findOne(cookieName);
-        // TODO: update the params with a _.merge?
-        $.cookie(cookieName, attrs);
+        var currentCookieDfd = this.findOne(cookieName);
+
+        currentCookieDfd.done( function (cookie) {
+            debugger;
+        });
     },
     destroy: function ( cookieName ) {
         return $.removeCookie(cookieName);
@@ -70,18 +72,20 @@ var Cookie = BackupModel.extend({
 
     // parseModels allows us to format the cookies as `key: value` pairs, vs
     // an array of objects whose keys are unknown
-    // this allows us to reliably
+    // this allows us to reliably iterate and print the keys
     parseModels: function (rawDough) {
-       var bakedCookies = [];
+       var bakedCookies = new can.List(),
+           i = 0;
        // note the syntax difference here between lodash
        can.each( rawDough, function ( value, indexKey ) {
-            bakedCookies.push({
+            bakedCookies.push( new can.Map({
+                id: i++,
                 key: indexKey,
                 value: value,
-            });
+            }));
        });
        return bakedCookies;
-    }
+    },
 
 }, {
     // no instance properties, yet

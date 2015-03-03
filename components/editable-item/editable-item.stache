@@ -1,0 +1,4 @@
+<div class="editable-container">
+    <span class="{{#editing}}hidden{{/editing}}">{{value}}</span>
+    <input class="{{^editing}}hidden{{/editing}}" value="{{value}}"/>
+</div>

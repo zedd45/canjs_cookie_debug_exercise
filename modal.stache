@@ -11,9 +11,11 @@
         <table class="table table-bordered table-hover table-responsive cookies-display">
           <tbody>
           {{#each cookies}}
-            <tr editable-item>
+            <tr>
               <td>{{key}}</td>
-              <td>{{value}}</td>
+              <td>
+                <editable-item item="{.}"></editable-item>
+              </td>
             </tr>
           {{/each}}
           </tbody>
